@@ -21,7 +21,7 @@ const boomBapFlick = {
 const cantHide = {
     songName: "Can't Hide",
     artist: "Otis Mcdonald",
-    file: "cant_hide""
+    file: "cant_hide"
 };
 
 const playlist = [asYouWere, boomBapFlick, cantHide];
