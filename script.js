@@ -51,8 +51,8 @@ function playPause(){
 };
 
 function loadSong(){
-    cover.src = `images/${playlist[index].file}.webp`;
-    song.src = `songs/${playlist[index].file}.mp3`;
+    cover.src = `./images/${playlist[index].file}.webp`;
+    song.src = `./songs/${playlist[index].file}.mp3`;
     songName.innerText = playlist[index].songName;
     bandName.innerText = playlist[index].artist;
 }
