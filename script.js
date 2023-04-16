@@ -79,6 +79,7 @@ function nextSong(){
     playSong();
 }
 
+loadSong()
 play.addEventListener("click", playPause);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
