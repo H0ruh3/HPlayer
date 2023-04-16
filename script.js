@@ -8,6 +8,7 @@ const previous = document.getElementById("previous");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffle = document.getElementById("shuffle");
+const repeat = document.getElementById("repeat");
 
 const asYouWere = {
     songName: "As You Were",
@@ -33,6 +34,7 @@ let sortedPlaylist = [...originalPlaylist];
 let index = 0;
 let isPlaying = false;
 let isShuffled = false;
+let repeatOn = false;
 
 function playSong(){
     play.querySelector(".bi").classList.replace("bi-play-circle-fill", "bi-pause-circle-fill");
@@ -121,11 +123,33 @@ function shuffleClicked(){
     }
 }
 
+function repeatClicked(){
+    if (repeatOn === false){
+        repeatOn = true;
+        repeat.classList.add("button-active");
+    }
+    else {
+        repeatOn = false;
+        repeat.classList.remove("button-active");
+    }
+}
+
+function nextOrRepeat(){
+    if (repeatOn === false){
+        nextSong();
+    }
+    else {
+        playSong();
+    }
+}
+
 loadSong();
 
 play.addEventListener("click", playPause);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
 song.addEventListener("timeupdate", updateProgressBar);
+song.addEventListener("ended", nextOrRepeat);
 progressContainer.addEventListener("click", jumpTo);
 shuffle.addEventListener("click", shuffleClicked);
+repeat.addEventListener("click", repeatClicked);
