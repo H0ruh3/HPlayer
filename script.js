@@ -5,6 +5,7 @@ const cover = document.getElementById("cover");
 const play = document.getElementById("play");
 const next = document.getElementById("next");
 const previous = document.getElementById("previous");
+const currentProgress = document.getElementById("current-progress");
 
 const asYouWere = {
     songName: "As You Were",
@@ -63,7 +64,7 @@ function previousSong(){
     }
     else{
         index -= 1
-    };
+    }
     loadSong();
     playSong();
 }
@@ -74,12 +75,19 @@ function nextSong(){
     }
     else{
         index += 1
-    };
+    }
     loadSong();
     playSong();
 }
 
+function updateProgressBar(){
+    const barWidth = (song.currentTime/song.duration)*100;
+    currentProgress.style.setProperty("--progress", `${barWidth}%`);
+}
+
 loadSong()
+
 play.addEventListener("click", playPause);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
+song.addEventListener("timeupdate", updateProgressBar);
