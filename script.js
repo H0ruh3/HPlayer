@@ -1,5 +1,7 @@
 const songName = document.getElementById("song-name");
 const bandName = document.getElementById("band-name");
+const songTime = document.getElementById("song-time");
+const totalTime = document.getElementById("total-time");
 const song = document.getElementById("audio");
 const cover = document.getElementById("cover");
 const play = document.getElementById("play");
@@ -86,9 +88,10 @@ function nextSong(){
     playSong();
 }
 
-function updateProgressBar(){
+function updateProgress(){
     const barWidth = (song.currentTime/song.duration)*100;
     currentProgress.style.setProperty("--progress", `${barWidth}%`);
+    updateSongTime();
 }
 
 function jumpTo(event){
@@ -143,13 +146,34 @@ function nextOrRepeat(){
     }
 }
 
+function toHHMMSS(timeSec){
+    hh = Math.floor(timeSec / 3600).toString().padStart(2, "0");
+    mm = Math.floor((timeSec - hh * 3600) / 60).toString().padStart(2, "0");
+    ss = Math.floor(timeSec - hh * 3600 - mm * 60).toString().padStart(2, "0");
+    if(hh === "00"){
+        return `${mm}:${ss}`;
+    }
+    else{
+        return`${hh}:${mm}:${ss}`;
+    }
+}
+
+function updateSongTime(){
+    songTime.innerText = toHHMMSS(song.currentTime);
+}
+
+function updateTotalTime(){
+    totalTime.innerText = toHHMMSS(song.duration);
+}
+
 loadSong();
 
 play.addEventListener("click", playPause);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
-song.addEventListener("timeupdate", updateProgressBar);
+song.addEventListener("timeupdate", updateProgress);
 song.addEventListener("ended", nextOrRepeat);
+song.addEventListener("loadedmetadata", updateTotalTime);
 progressContainer.addEventListener("click", jumpTo);
 shuffle.addEventListener("click", shuffleClicked);
 repeat.addEventListener("click", repeatClicked);
