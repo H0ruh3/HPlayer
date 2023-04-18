@@ -54,6 +54,12 @@ button {
     max-width: 450px;
 }
 
+#cover-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #playlist-title {
     display: flex;
     flex-direction: row;
@@ -64,6 +70,10 @@ button {
 #song-name {
     font-size: 1.5em;
     font-weight: bolder;
+}
+
+#band-name {
+    font-size: 0.8em;
 }
 
 .light-color {

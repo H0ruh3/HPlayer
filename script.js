@@ -12,25 +12,50 @@ const progressContainer = document.getElementById("progress-container");
 const shuffle = document.getElementById("shuffle");
 const repeat = document.getElementById("repeat");
 
-const asYouWere = {
-    songName: "As You Were",
-    artist: "TrackTribe",
-    file: 'as_you_were'
-};
-
-const boomBapFlick = {
-    songName: "Boom Bap Flick",
-    artist: "Quincas Moreira",
-    file: 'boom_bap_flick'
-};
-
-const cantHide = {
-    songName: "Can't Hide",
-    artist: "Otis Mcdonald",
-    file: "cant_hide"
-};
-
-const originalPlaylist = [asYouWere, boomBapFlick, cantHide];
+const originalPlaylist = [
+    {
+        songName: "O Herói do Escudo",
+        artist: "Takr, 808 Ander, ZEP, Enygma Rapper",
+        cover: "./images/o_heroi_do_escudo.webp",
+        song: "./songs/o_heroi_do_escudo.mp3",
+        liked: false
+    },
+    {
+        songName: "Um Bilhão",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/um_bilhao.webp",
+        song: "./songs/um_bilhao.mp3",
+        liked: false
+    },
+    {
+        songName: "Caçador de Heróis",
+        artist: "Takr",
+        cover: "./images/cacador_de_herois.webp",
+        song: "./songs/cacador_de_herois.mp3",
+        liked: false
+    },
+    {
+        songName: "Tipo Um Raio",
+        artist: "Takr, 808 Ander",
+        cover: "./images/tipo_um_raio.webp",
+        song: "./songs/tipo_um_raio.mp3",
+        liked: false
+    },
+    {
+        songName: "Rap do Zoro: O Maior Espadachim do Mundo",
+        artist: "7 Minutoz",
+        cover: "./images/rap_do_zoro.webp",
+        song: "./songs/rap_do_zoro.mp3",
+        liked: false
+    },
+    {
+        songName: "Anti Magia",
+        artist: "Takr, 808 Ander, Felicia Rock",
+        cover: "./images/anti_magia.webp",
+        song: "./songs/anti_magia.mp3",
+        liked: false
+    }
+];
 let sortedPlaylist = [...originalPlaylist];
 
 let index = 0;
@@ -60,8 +85,8 @@ function playPause(){
 };
 
 function loadSong(){
-    cover.src = `./images/${sortedPlaylist[index].file}.webp`;
-    song.src = `./songs/${sortedPlaylist[index].file}.mp3`;
+    cover.src = sortedPlaylist[index].cover;
+    song.src = sortedPlaylist[index].song;
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
 }
