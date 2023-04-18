@@ -54,6 +54,83 @@ const originalPlaylist = [
         cover: "./images/anti_magia.webp",
         song: "./songs/anti_magia.mp3",
         liked: false
+    },
+    {
+        songName: "Jan Ken Guu",
+        artist: "Takr, 808 Ander",
+        cover: "./images/jan_ken_guu.webp",
+        song: "./songs/jan_ken_guu.mp3",
+        liked: false
+    },
+    {
+        songName: "Nukenin",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/nukenin.webp",
+        song: "./songs/nukenin.mp3",
+        liked: false
+    },
+    {
+        songName: "Vai Desejar Não Estar Vivo",
+        artist: "Takr, 808 Ander",
+        cover: "./images/vai_desejar_nao_estar_vivo.webp",
+        song: "./songs/vai_desejar_nao_estar_vivo.mp3",
+        liked: false
+    },
+    {
+        songName: "Glock Da Akatsuki",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/glock_da_akatsuki.webp",
+        song: "./songs/glock_da_akatsuki.mp3",
+        liked: false
+    },
+    {
+        songName: "Modo Orgulho",
+        artist: "Takr, VG Beats",
+        cover: "./images/modo_orgulho.webp",
+        song: "./songs/modo_orgulho.mp3",
+        liked: false
+    },
+    {
+        songName: "O Rei Das Maldições",
+        artist: "Takr, 808 Ander, ZEP, Felicia Rock",
+        cover: "./images/o_rei_das_maldicoes.webp",
+        song: "./songs/o_rei_das_maldicoes.mp3",
+        liked: false
+    },
+    {
+        songName: "Modo Orgulho 2",
+        artist: "Takr, Sidney Scaccio, MHRAP, Tauz",
+        cover: "./images/modo_orgulho_2.webp",
+        song: "./songs/modo_orgulho_2.mp3",
+        liked: false
+    },
+    {
+        songName: "Cria Da Folha",
+        artist: "Takr, Sidney Scaccio, MHRAP",
+        cover: "./images/cria_da_folha.webp",
+        song: "./songs/cria_da_folha.mp3",
+        liked: false
+    },
+    {
+        songName: "Tipo Um Dragão",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/tipo_um_dragao.webp",
+        song: "./songs/tipo_um_dragao.mp3",
+        liked: false
+    },
+    {
+        songName: "O Maior Serial Killer",
+        artist: "Takr, 808 Ander",
+        cover: "./images/o_maior_seial_killer.webp",
+        song: "./songs/o_maior_seial_killer.mp3",
+        liked: false
+    },
+    {
+        songName: "Ragnarok",
+        artist: "Takr, 808 Ander, ZEP",
+        cover: "./images/ragnarok.webp",
+        song: "./songs/ragnarok.mp3",
+        liked: false
     }
 ];
 let sortedPlaylist = [...originalPlaylist];
