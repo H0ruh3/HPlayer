@@ -11,8 +11,9 @@ const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffle = document.getElementById("shuffle");
 const repeat = document.getElementById("repeat");
+const like = document.getElementById("like")
 
-const originalPlaylist = [
+const originalPlaylist = JSON.parse(localStorage.getItem("playlist")) ?? [
     {
         songName: "O Herói do Escudo",
         artist: "Takr, 808 Ander, ZEP, Enygma Rapper",
@@ -131,6 +132,265 @@ const originalPlaylist = [
         cover: "./images/ragnarok.webp",
         song: "./songs/ragnarok.mp3",
         liked: false
+    },
+    {
+        songName: "Escudo da Fúria",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/escudo_da_furia.webp",
+        song: "./songs/escudo_da_furia.mp3",
+        liked: false
+    },
+    {
+        songName: "Rap do Naruto: O Sétimo Hokage",
+        artist: "7 Minutoz",
+        cover: "./images/rap_do_naruto.webp",
+        song: "./songs/rap_do_naruto.mp3",
+        liked: false
+    },
+    {
+        songName: "Punho Divergente",
+        artist: "Takr, 808 Ander",
+        cover: "./images/punho_divergente.webp",
+        song: "./songs/punho_divergente.mp3",
+        liked: false
+    },
+    {
+        songName: "Chamas Azuis",
+        artist: "Takr, 808 Ander",
+        cover: "./images/chamas_azuis.webp",
+        song: "./songs/chamas_azuis.mp3",
+        liked: false
+    },
+    {
+        songName: "Tenham Medo Porque Eu Estou Aqui",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/tenham_medo_porque_eu_estou_aqui.webp",
+        song: "./songs/tenham_medo_porque_eu_estou_aqui.mp3",
+        liked: false
+    },
+    {
+        songName: "O Novo Símbolo Do Medo",
+        artist: "Takr, 808 Ander",
+        cover: "./images/o_novo_simbolo_do_medo.webp",
+        song: "./songs/o_novo_simbolo_do_medo.mp3",
+        liked: false
+    },
+    {
+        songName: "Hiraishin",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/hiraishin.webp",
+        song: "./songs/hiraishin.mp3",
+        liked: false
+    },
+    {
+        songName: "O Mais Brabo Da Britannia",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/o_mais_brabo_da_britannia.webp",
+        song: "./songs/o_mais_brabo_da_britannia.mp3",
+        liked: false
+    },
+    {
+        songName: "Invencível",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/invencivel.webp",
+        song: "./songs/invencivel.mp3",
+        liked: false
+    },
+    {
+        songName: "Tsukuyomi",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/tsukuyomi.webp",
+        song: "./songs/tsukuyomi.mp3",
+        liked: false
+    },
+    {
+        songName: "Kagemane",
+        artist: "Takr, 808 Ander",
+        cover: "./images/kagemane.webp",
+        song: "./songs/kagemane.mp3",
+        liked: false
+    },
+    {
+        songName: "Eu Sou o Mal",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/eu_sou_o_mal.webp",
+        song: "./songs/eu_sou_o_mal.mp3",
+        liked: false
+    },
+    {
+        songName: "Estilo Kakashi",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/estilo_kakashi.webp",
+        song: "./songs/estilo_kakashi.mp3",
+        liked: false
+    },
+    {
+        songName: "O Escolhido da Mana",
+        artist: "Takr, 808 Ander, ZEP",
+        cover: "./images/o_escolhido_da_mana.webp",
+        song: "./songs/o_escolhido_da_mana.mp3",
+        liked: false
+    },
+    {
+        songName: "Kamuizada",
+        artist: "Takr",
+        cover: "./images/kamuizada.webp",
+        song: "./songs/kamuizada.mp3",
+        liked: false
+    },
+    {
+        songName: "Olhos de Falcão",
+        artist: "Takr, 808 Ander",
+        cover: "./images/olhos_de_falcao.webp",
+        song: "./songs/olhos_de_falcao.mp3",
+        liked: false
+    },
+    {
+        songName: "Corte Dimensional",
+        artist: "Takr, 808 Ander",
+        cover: "./images/corte_dimensional.webp",
+        song: "./songs/corte_dimensional.mp3",
+        liked: false
+    },
+    {
+        songName: "Muryo Kusho",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/muryo_kusho.webp",
+        song: "./songs/muryo_kusho.mp3",
+        liked: false
+    },
+    {
+        songName: "O Demônio da Névoa",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/o_demonio_da_nevoa.webp",
+        song: "./songs/o_demonio_da_nevoa.mp3",
+        liked: false
+    },
+    {
+        songName: "Renegado",
+        artist: "Takr",
+        cover: "./images/renegado.webp",
+        song: "./songs/renegado.mp3",
+        liked: false
+    },
+    {
+        songName: "Modo Gula",
+        artist: "Takr, Sidney Scaccio, Felicia Rock",
+        cover: "./images/modo_gula.webp",
+        song: "./songs/modo_gula.mp3",
+        liked: false
+    },
+    {
+        songName: "Maldição do Ódio",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/maldicao_do_odio.webp",
+        song: "./songs/maldicao_do_odio.mp3",
+        liked: false
+    },
+    {
+        songName: "Olhos do Senhor",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/olhos_do_senhor.webp",
+        song: "./songs/olhos_do_senhor.mp3",
+        liked: false
+    },
+    {
+        songName: "O Rei do Vale do Fim",
+        artist: "Takr, 808 Ander",
+        cover: "./images/o_rei_do_vale_do_fim.webp",
+        song: "./songs/o_rei_do_vale_do_fim.mp3",
+        liked: false
+    },
+    {
+        songName: "Kira",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/kira.webp",
+        song: "./songs/kira.mp3",
+        liked: false
+    },
+    {
+        songName: "Mente Obscura",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/mente_obscura.webp",
+        song: "./songs/mente_obscura.mp3",
+        liked: false
+    },
+    {
+        songName: "Chidori",
+        artist: "Takr, Sidney Scaccio",
+        cover: "./images/chidori.webp",
+        song: "./songs/chidori.mp3",
+        liked: false
+    },
+    {
+        songName: "Majin",
+        artist: "Takr, Sidney Scaccii",
+        cover: "./images/majin.webp",
+        song: "./songs/majin.mp3",
+        liked: false
+    },
+    {
+        songName: "Eu Sou a Lenda",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/eu_sou_a_lenda.webp",
+        song: "./songs/eu_sou_a_lenda.mp3",
+        liked: false
+    },
+    {
+        songName: "Estrondo",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/estrondo.webp",
+        song: "./songs/estrondo.mp3",
+        liked: false
+    },
+    {
+        songName: "Yonkou",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/yonkou.webp",
+        song: "./songs/yonkou.mp3",
+        liked: false
+    },
+    {
+        songName: "Oni Original",
+        artist: "Takr, 808 Ander, Zep, Felicia Rock",
+        cover: "./images/oni_original.webp",
+        song: "./songs/oni_original.mp3",
+        liked: false
+    },
+    {
+        songName: "Rap do Killua: Meu Nome Começa com Kill",
+        artist: "7 Minutoz",
+        cover: "./images/rap_do_killua.webp",
+        song: "./songs/rap_do_killua.mp3",
+        liked: false
+    },
+    {
+        songName: "Rap Dos Coringas",
+        artist: "7 Minutoz",
+        cover: "./images/rap_dos_coringas.webp",
+        song: "./songs/rap_dos_coringas.mp3",
+        liked: false
+    },
+    {
+        songName: "Rap Da Akatsuki",
+        artist: "7 Minutoz",
+        cover: "./images/rap_da_akatsuki.webp",
+        song: "./songs/rap_da_akatsuki.mp3",
+        liked: false
+    },
+    {
+        songName: "O Iluminado",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/o_iluminado.webp",
+        song: "./songs/o_iluminado.mp3",
+        liked: false
+    },
+    {
+        songName: "Face The King",
+        artist: "Takr, 808 Ander, Zep",
+        cover: "./images/face_the_king.webp",
+        song: "./songs/face_the_king.mp3",
+        liked: false
     }
 ];
 let sortedPlaylist = [...originalPlaylist];
@@ -152,6 +412,17 @@ function pauseSong(){
     isPlaying = false;
 }
 
+function likeRender(){
+    if(sortedPlaylist[index].liked === true){
+        like.querySelector(".bi").classList.replace("bi-heart", "bi-heart-fill");
+        like.classList.add("button-active");
+    }
+    else{
+        like.querySelector(".bi").classList.replace("bi-heart-fill", "bi-heart");
+        like.classList.remove("button-active");
+    }
+}
+
 function playPause(){
     if(isPlaying === true){
         pauseSong();
@@ -166,6 +437,7 @@ function loadSong(){
     song.src = sortedPlaylist[index].song;
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
+    likeRender()
 }
 
 function previousSong(){
@@ -239,6 +511,17 @@ function repeatClicked(){
     }
 }
 
+function likeClicked(){
+    if(sortedPlaylist[index].liked === false){
+        sortedPlaylist[index].liked = true;
+    }
+    else{
+        sortedPlaylist[index].liked = false;
+    }
+    likeRender();
+    localStorage.setItem("playlist", JSON.stringify(originalPlaylist))
+}
+
 function nextOrRepeat(){
     if (repeatOn === false){
         nextSong();
@@ -279,3 +562,4 @@ song.addEventListener("loadedmetadata", updateTotalTime);
 progressContainer.addEventListener("click", jumpTo);
 shuffle.addEventListener("click", shuffleClicked);
 repeat.addEventListener("click", repeatClicked);
+like.addEventListener("click", likeClicked)
