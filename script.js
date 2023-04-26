@@ -456,7 +456,7 @@ function loadSong(){
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
     song.currentTime = localStorage.getItem("currentTime") ?? 0;
-    song.duration = localStorage.getItem("duration") ?? 0;
+
     likeRender();
     shuffleRender();
     repeatRender();
