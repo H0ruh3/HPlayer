@@ -471,6 +471,7 @@ function previousSong(){
         index -= 1;
     }
     localStorage.setItem("index", index);
+    localStorage.setItem("currentTime", 0);
     loadSong();
     playSong();
 }
@@ -483,6 +484,7 @@ function nextSong(){
         index += 1;
     }
     localStorage.setItem("index", index);
+    localStorage.setItem("currentTime", 0);
     loadSong();
     playSong();
 }
