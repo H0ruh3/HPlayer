@@ -393,12 +393,12 @@ const originalPlaylist = JSON.parse(localStorage.getItem("playlist")) ?? [
         liked: false
     }
 ];
-let sortedPlaylist = [...originalPlaylist];
+let sortedPlaylist = JSON.parse(localStorage.getItem("sortedPlaylist")) ?? [...originalPlaylist];
 
-let index = 0;
+let index = Math.floor(localStorage.getItem("index")) ?? 0;
 let isPlaying = false;
-let isShuffled = false;
-let repeatOn = false;
+let isShuffled = JSON.parse(localStorage.getItem("isShuffled")) ?? false;
+let repeatOn = JSON.parse(localStorage.getItem("repeatOn")) ?? false;
 
 function playSong(){
     play.querySelector(".bi").classList.replace("bi-play-circle-fill", "bi-pause-circle-fill");
@@ -423,6 +423,24 @@ function likeRender(){
     }
 }
 
+function shuffleRender(){
+    if(isShuffled === true){
+        shuffle.classList.add("button-active");
+    }
+    else{
+        shuffle.classList.remove("button-active");
+    }
+}
+
+function repeatRender(){
+    if(repeatOn === true){
+        repeat.classList.add("button-active");
+    }
+    else{
+        repeat.classList.remove("button-active");
+    }
+}
+
 function playPause(){
     if(isPlaying === true){
         pauseSong();
@@ -437,7 +455,12 @@ function loadSong(){
     song.src = sortedPlaylist[index].song;
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
-    likeRender()
+    song.currentTime = localStorage.getItem("currentTime") ?? 0;
+    song.duration = localStorage.getItem("duration") ?? 0;
+    likeRender();
+    shuffleRender();
+    repeatRender();
+    updateProgress();
 }
 
 function previousSong(){
@@ -447,6 +470,7 @@ function previousSong(){
     else{
         index -= 1;
     }
+    localStorage.setItem("index", index);
     loadSong();
     playSong();
 }
@@ -458,12 +482,15 @@ function nextSong(){
     else{
         index += 1;
     }
+    localStorage.setItem("index", index);
     loadSong();
     playSong();
 }
 
 function updateProgress(){
-    const barWidth = (song.currentTime/song.duration)*100;
+    localStorage.setItem("currentTime", song.currentTime);
+    localStorage.setItem("duration", song.duration);
+    const barWidth = (song.currentTime /song.duration)*100 || 0;
     currentProgress.style.setProperty("--progress", `${barWidth}%`);
     updateSongTime();
 }
@@ -491,13 +518,16 @@ function shuffleClicked(){
     if (isShuffled === false){
         isShuffled = true;
         shufflePlaylist(sortedPlaylist);
+        localStorage.setItem("sortedPlaylist", JSON.stringify(sortedPlaylist));
         shuffle.classList.add("button-active");
     }
     else {
         isShuffled = false;
         sortedPlaylist = [...originalPlaylist];
+        localStorage.setItem("sortedPlaylist", JSON.stringify(sortedPlaylist));
         shuffle.classList.remove("button-active");
     }
+    localStorage.setItem("isShuffled", isShuffled);
 }
 
 function repeatClicked(){
@@ -509,6 +539,7 @@ function repeatClicked(){
         repeatOn = false;
         repeat.classList.remove("button-active");
     }
+    localStorage.setItem("repeatOn", repeatOn);
 }
 
 function likeClicked(){
@@ -520,6 +551,7 @@ function likeClicked(){
     }
     likeRender();
     localStorage.setItem("playlist", JSON.stringify(originalPlaylist))
+    localStorage.setItem("sortedPlaylist", JSON.stringify(sortedPlaylist))
 }
 
 function nextOrRepeat(){
